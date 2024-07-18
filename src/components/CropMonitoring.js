@@ -20,7 +20,7 @@ const CropMonitoring = () => {
               <div className="flex items-center justify-between pt-12">
                 <div className='items-center '>No. of steps - {stage.steps}</div>
                 <div className=" mr-5 flex items-center text-green-500">
-                  <a href="#" className="underline">View</a>
+                  <a href="./" className="underline">View</a>
                   <FaArrowRight className="ml-2" />
                 </div>
               </div>

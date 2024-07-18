@@ -1,20 +1,28 @@
 import './App.css';
-import CropMonitoring from './components/CropMonitoring';
-import CropSelection from './components/CropSelection';
+import React, { useState } from 'react';
 import FarmerInfo from './components/FarmerInfo';
+import FarmerList from './components/FarmerList';
 import NavButtons from './components/NavButtons';
-import Regulation from './components/Regulation';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
+  const [farmers, setFarmers] = useState([]);
+
+  const addFarmerToList = (newFarmer) => {
+    setFarmers([...farmers, newFarmer]);
+  };
+
   return (
-    <div className="App bg-gray-50">
-      <NavButtons/>
-      <FarmerInfo/>
-      <CropSelection/>
-      <CropMonitoring/>
-      <Regulation/>
-    </div>
+    <Router>
+      <div className="App bg-gray-50">
+        <NavButtons onAddFarmer={addFarmerToList} />
+        <Routes>
+          <Route path="/farmers" element={<FarmerList />} />
+        <Route path="/farmer-info" element={<FarmerInfo />} />
+        <Route path="/" element={<FarmerList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

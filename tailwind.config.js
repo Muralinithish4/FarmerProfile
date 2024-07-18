@@ -33,6 +33,9 @@ module.exports = {
       fontFamily: {
         'work-sans': ['"Work Sans"', 'sans-serif'],
       },
+      colors:{
+        primary:"var(--primaryGreen)",
+      }
     },
   },
   plugins: [],
