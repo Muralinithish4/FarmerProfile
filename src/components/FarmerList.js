@@ -39,7 +39,6 @@ const FarmerList = () => {
         console.error('There was an error deleting the farmer!', error);
       });
   };
-
   const viewFarmer = (farmer) => {
     navigate('/farmer-info', { state: { farmer } });
   };
