@@ -50,7 +50,7 @@ const FarmerInfo = () => {
               onChange={handleImageUpload}
             />
             <MdEdit
-              className="absolute bottom-9 right-10 w-8 h-8 bg-white text-green-500 rounded-full p-1 cursor-pointer"
+              className="absolute bottom-11 right-10 w-8 h-8 bg-white text-green-500 rounded-full p-1 cursor-pointer"
               onClick={() => document.querySelector('input[type="file"]').click()}
             />
           </div>
