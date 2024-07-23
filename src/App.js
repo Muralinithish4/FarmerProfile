@@ -20,7 +20,7 @@ function App() {
           <Route path="/farmers" element={<FarmerList />} />
         <Route path="/farmer-info" element={<FarmerInfo />} />
         <Route path="/" element={<FarmerList />} />
-        </Routes>
+        </Routes> 
       </div>
     </Router>
   );

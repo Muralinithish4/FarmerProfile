@@ -1,7 +1,7 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { MdEdit } from "react-icons/md";
 import logo from './logo1.png';
 import CropSelection from './CropSelection';
 import CropMonitoring from './CropMonitoring';
@@ -11,6 +11,19 @@ const FarmerInfo = () => {
   const location = useLocation();
   const farmer = location.state?.farmer;
   const navigate = useNavigate();
+
+  const [profilePicture, setProfilePicture] = useState(logo);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePicture(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   if (!farmer) {
     return <div>Loading...</div>;
@@ -24,11 +37,23 @@ const FarmerInfo = () => {
           onClick={() => navigate(-1)}
         />
         <div className="flex flex-row gap-10 items-center">
-          <img
-            className="w-44 h-44 m-8 rounded-full"
-            src={logo}
-            alt="Farmer"
-          />
+          <div className="relative">
+            <img
+              className="w-44 h-44 m-8 rounded-full"
+              src={profilePicture}
+              alt="Farmer"
+            />
+            <input
+              type="file"
+              accept="image/*"
+              className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+              onChange={handleImageUpload}
+            />
+            <MdEdit
+              className="absolute bottom-9 right-10 w-8 h-8 bg-white text-green-500 rounded-full p-1 cursor-pointer"
+              onClick={() => document.querySelector('input[type="file"]').click()}
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <div className="flex flex-row gap-64 mb-5">
               <div className='w-36'>
@@ -61,4 +86,3 @@ const FarmerInfo = () => {
 };
 
 export default FarmerInfo;
-

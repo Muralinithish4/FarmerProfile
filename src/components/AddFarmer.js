@@ -21,7 +21,7 @@ const AddFarmer = ({ onClose, onAddFarmer, onUpdateFarmer, farmer }) => {
     const farmerData = { name, phoneNumber, location };
 
     if (farmer) {
-      axios.put(`http://localhost:8000/api/farmers/${farmer.id}`, farmerData)
+      axios.put(`http://localhost:8001/api/farmers/${farmer.id}`, farmerData)
         .then((res) => {
           onUpdateFarmer(res.data);
           onClose();
@@ -31,7 +31,7 @@ const AddFarmer = ({ onClose, onAddFarmer, onUpdateFarmer, farmer }) => {
           console.error('There was an error updating the farmer!', error);
         });
     } else {
-      axios.post('http://localhost:8000/api/farmers', farmerData)
+      axios.post('http://localhost:8001/api/farmers', farmerData)
         .then((res) => {
           onAddFarmer(res.data); // Assuming res.data contains the new farmer object
           onClose();

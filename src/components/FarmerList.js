@@ -13,7 +13,7 @@ const FarmerList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/farmers')
+    axios.get('http://localhost:8001/api/farmers')
       .then((res) => {
         setFarmers(res.data);
       })
@@ -31,7 +31,7 @@ const FarmerList = () => {
   };
 
   const deleteFarmer = (id) => {
-    axios.delete(`http://localhost:8000/api/farmers/${id}`)
+    axios.delete(`http://localhost:8001/api/farmers/${id}`)
       .then(() => {
         setFarmers(farmers.filter(farmer => farmer.id !== id));
       })
